@@ -1,0 +1,784 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="css实现自适应正方形/img外层/12345678910.img-wrap&amp;#123;     width: 100%;     padding: 50% 0;    height: 0;    border: none;    background: none;    text-align: center;    position: relative;    overflow: hidden;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="css笔记">
+<meta property="og:url" content="http://yoursite.com/css/index.html">
+<meta property="og:site_name" content="icetower">
+<meta property="og:description" content="css实现自适应正方形/img外层/12345678910.img-wrap&amp;#123;     width: 100%;     padding: 50% 0;    height: 0;    border: none;    background: none;    text-align: center;    position: relative;    overflow: hidden;">
+<meta property="og:updated_time" content="2017-03-06T07:44:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css笔记">
+<meta name="twitter:description" content="css实现自适应正方形/img外层/12345678910.img-wrap&amp;#123;     width: 100%;     padding: 50% 0;    height: 0;    border: none;    background: none;    text-align: center;    position: relative;    overflow: hidden;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title>
+  
+
+  
+    css笔记 | icetower
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9b88e5171ec44a2e79c0192d9a90f7cb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+    <!--- add Fork me on Github -->
+    <a href="https://github.com/yanghcc"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
+    <!--- add Fork me on Github -->
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">icetower</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">静下心好好工作，好好生活</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-css">
+          <a href="/css" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CSS笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-article">
+          <a href="/article" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+      <h4 id="css实现自适应正方形"><a href="#css实现自适应正方形" class="headerlink" title="css实现自适应正方形"></a>css实现自适应正方形</h4><p>/<em>img外层</em>/<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.img-wrap&#123;</div><div class="line">     width: 100%;</div><div class="line">     padding: 50% 0;</div><div class="line">    height: 0;</div><div class="line">    border: none;</div><div class="line">    background: none;</div><div class="line">    text-align: center;</div><div class="line">    position: relative;</div><div class="line">    overflow: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>/<em>img使用绝对定位</em>/<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.img-wrap img&#123;</div><div class="line">     width: 100%;</div><div class="line">     position: absolute;</div><div class="line">     top: 0;</div><div class="line">     left: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="文本内容禁止选中"><a href="#文本内容禁止选中" class="headerlink" title="文本内容禁止选中"></a>文本内容禁止选中</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.disable-selected&#123;</div><div class="line">          -moz-user-select: -moz-none;</div><div class="line">          -moz-user-select: none;</div><div class="line">          -o-user-select:none;</div><div class="line">          -webkit-user-select:none;</div><div class="line">          -ms-user-select:none;</div><div class="line">          user-select:none;</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<h4 id="去除ios系统表单元素默认内阴影"><a href="#去除ios系统表单元素默认内阴影" class="headerlink" title="去除ios系统表单元素默认内阴影"></a>去除ios系统表单元素默认内阴影</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-webkit-appearance:none;</div></pre></td></tr></table></figure>
+<p>注：适用于表单元素 input &amp;&amp; textarea</p>
+<h4 id="flex学习笔记"><a href="#flex学习笔记" class="headerlink" title="flex学习笔记"></a>flex学习笔记</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">display:flex;</div><div class="line">justify-content:flex-end;居右</div><div class="line">justify-content:center;居中</div><div class="line">justify-content:space-between;左右对齐  《水平方向》</div><div class="line">align-items:center;垂直居中</div><div class="line">align-items:flex-end;居底    《垂直方向》</div><div class="line">flex-direction:cloum;设置排列方向为竖直方向</div><div class="line">对于子元素：item&#123; align-self: center; &#125;则是根据自身属性进行定位。</div></pre></td></tr></table></figure>
+<h4 id="css透明度被继承的问题"><a href="#css透明度被继承的问题" class="headerlink" title="css透明度被继承的问题"></a>css透明度被继承的问题</h4><p>使用rgba():<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.bg&#123;</div><div class="line">    background:rgba(0,0,0,0.3)</div><div class="line">&#125;</div><div class="line">/*代替*/</div><div class="line">.bg&#123;</div><div class="line">    background-color:<span class="comment">#000;</span></div><div class="line">    opacity:.3;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">background: rgb(0, 0, 0);    /*不支持rgba的浏览器*/</div><div class="line">background: rgba(0,0,0,.5);  /*支持rgba的浏览器*/</div><div class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=<span class="comment">#7f000000,endColorstr=#7f000000);    /*IE8支持*/</span></div></pre></td></tr></table></figure>
+<h4 id="移动端，超过两行的高度，显示省略号"><a href="#移动端，超过两行的高度，显示省略号" class="headerlink" title="移动端，超过两行的高度，显示省略号"></a>移动端，超过两行的高度，显示省略号</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.ellipsis&#123;</div><div class="line">    overflow : hidden;</div><div class="line">    text-overflow: ellipsis;</div><div class="line">    display: -webkit-box;</div><div class="line">    -webkit-line-clamp: 2;</div><div class="line">    -webkit-box-orient: vertical;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="js去除首尾空格"><a href="#js去除首尾空格" class="headerlink" title="js去除首尾空格"></a>js去除首尾空格</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//去除字符串两端空格的方法，string是全局对象</div><div class="line">String.prototype.noSpace=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">    <span class="built_in">return</span> this.replace(/^\s*|\s*$/g, <span class="string">''</span>);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h4 id="根据请求头，判断设备类型，重新定向链接"><a href="#根据请求头，判断设备类型，重新定向链接" class="headerlink" title="根据请求头，判断设备类型，重新定向链接"></a>根据请求头，判断设备类型，重新定向链接</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var u = navigator.userAgent;</div><div class="line">     <span class="keyword">if</span> (u.indexOf(<span class="string">'Android'</span>) &gt; -1 || u.indexOf(<span class="string">'Linux'</span>) &gt; -1</div><div class="line">               || u.indexOf(<span class="string">'Windows Phone'</span>) &gt; -1 || u.indexOf(<span class="string">'iPhone'</span>) &gt; -1</div><div class="line">               || u.indexOf(<span class="string">'iPad'</span>) &gt; -1) &#123;</div><div class="line">               window.location.href =<span class="string">'http://m.anta.cn/'</span>;</div><div class="line"></div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<h4 id="记录常见浏览器兼容Q-amp-A"><a href="#记录常见浏览器兼容Q-amp-A" class="headerlink" title="记录常见浏览器兼容Q&amp;A"></a>记录常见浏览器兼容Q&amp;A</h4><p>1、浏览器默认的margin和padding不同。解决方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*&#123;margin:0;padding:0;&#125;</div></pre></td></tr></table></figure></p>
+<p>2、IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。解决方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">display:inline;//在<span class="built_in">float</span>的标签display属性转化为行内属性。</div></pre></td></tr></table></figure></p>
+<p>3、在ie6，ie7中元素高度超出自己设置高度。原因是IE8以前的浏览器中会给元素设置默认的行高的高度导致的。解决方案是加上overflow:hidden或设置line-height为更小的高度。</p>
+<p>4、min-height在IE6下不起作用。解决方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">height:auto!important;</div><div class="line">height:xxpx;其中xx就是min-height设置的值。</div></pre></td></tr></table></figure></p>
+<p>5、透明性IE用filter:Alpha(Opacity=60)，而其他主流浏览器用 opacity:0.6;</p>
+<p>6、a(有href属性)标签嵌套下的img标签，在IE下会带有边框。解决办法:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a img&#123;border:none;&#125;</div></pre></td></tr></table></figure></p>
+<p>7、input边框问题。去掉input边框一般用border:none;就可以，但由于IE6在解析input样式时的BUG(优先级问题)，在IE6下无效。   ie6的默认CSS样式，涉及到border的有border-style:inset;border-width:2px;浏览器根据自己的内核解析规则，先解析自身的默认CSS，再解析开发者书写的CSS，达到渲染标签的目的。IE6对INPUT的渲染存在bug，border:none;不被解析，当有border-width或border-color设置的时候才会令IE6去解析border-style:none; 解决方案如下，推荐用第三种方案:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">方法一：</div><div class="line">border:0</div><div class="line">方法二：</div><div class="line">border:0 none;</div><div class="line">方法三：</div><div class="line">border:none:border-color:transparent;</div></pre></td></tr></table></figure></p>
+<p>8、父子标签间用margin的问题，表现在有时除IE(6/7)外的浏览器子标签margin转移到了父标签上，IE6&amp;7下没有.</p>
+<p>9、父子关系的标签，子标签浮动导致父标签不再包裹子标签。解决方法是清楚浮动,多种方法如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/* bootstrap解决办法 */</div><div class="line">.clearfix:before,</div><div class="line">.clearfix:after&#123;</div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    display: table;</div><div class="line">&#125;</div><div class="line">.clearfix:after&#123;</div><div class="line">    clear: both;</div><div class="line">&#125;</div><div class="line">.clearfix&#123;</div><div class="line">    zoom:1;</div><div class="line">&#125;</div><div class="line">/* zoom是在处理兼容性问题，hidden和auto都能清除浮动，据说auto对seo更友好 ，缺点：多级结构时*/</div><div class="line">.clear-float3&#123; overflow: auto/hidden; zoom: 1; &#125;</div><div class="line"></div><div class="line">/*当父包含块缩成一条时无效 */</div><div class="line">.clear-float1&#123; content: “”; display: block; clear: both; &#125;</div><div class="line"></div><div class="line">/*兄弟级别加一个空div。 */</div><div class="line">.clear&#123;clear:both; height: 0; line-height: 0; font-size: 0&#125;</div></pre></td></tr></table></figure></p>
+<p>10、列出display的值，说明他们的作用。<br>解：block 象块类型元素一样显示。none 缺省值。象行内元素类型一样显示。inline-block 象行内元素一样显示，但其内容象块类型元素一样显示。list-item象块类型元素一样显示，并添加样式列表标记。</p>
+<p>11、position的值， relative和absolute定位原点是？<br>解：<em>absolute 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。</em>fixed（老IE不支持）生成绝对定位的元素，相对于浏览器窗口进行定位。<em>relative 生成相对定位的元素，相对于其正常位置进行定位。 </em> static  默认值。没有定位，元素出现在正常的流中 <em>（忽略 top, bottom, left, right z-index 声明）。</em> inherit 规定从父元素继承 position 属性的值。</p>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="css/index.html"
+           data-title="css笔记" data-url="http://yoursite.com/css/index.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="yanghc" />
+          <p class="site-author-name" itemprop="name">yanghc</p>
+          <p class="site-description motion-element" itemprop="description">既然选择了远方，便只顾风雨兼程<br/>personal blog</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yanghcc" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/IcetowerTech" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/IcetowerTech/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanghc</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"icetower"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("2sCCRq0wV61UaepBtUojQgiU-gzGzoHsz", "hYPzdu4bjbvA7Ttgur5r5OQn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,973 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javaScript,jQuery," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="jquery trigger()源码1234567891011121314151617181920212223242526272829303132333435363738394041/**   * 事件触发器   * @param &amp;#123; Object &amp;#125; DOM元素   * @param &amp;#123; String / Object &amp;#125; 事件类型 / event对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQueryNote">
+<meta property="og:url" content="http://yoursite.com/2017/02/20/jQueryNote/index.html">
+<meta property="og:site_name" content="icetower">
+<meta property="og:description" content="jquery trigger()源码1234567891011121314151617181920212223242526272829303132333435363738394041/**   * 事件触发器   * @param &amp;#123; Object &amp;#125; DOM元素   * @param &amp;#123; String / Object &amp;#125; 事件类型 / event对象">
+<meta property="og:updated_time" content="2017-02-22T07:16:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQueryNote">
+<meta name="twitter:description" content="jquery trigger()源码1234567891011121314151617181920212223242526272829303132333435363738394041/**   * 事件触发器   * @param &amp;#123; Object &amp;#125; DOM元素   * @param &amp;#123; String / Object &amp;#125; 事件类型 / event对象">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> jQueryNote | icetower </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9b88e5171ec44a2e79c0192d9a90f7cb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <!--- add Fork me on Github -->
+    <a href="https://github.com/yanghcc"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
+    <!--- add Fork me on Github -->
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">icetower</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">静下心好好工作，好好生活</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-css">
+          <a href="/css" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CSS笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-article">
+          <a href="/article" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                jQueryNote
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-20T19:50:34+08:00" content="2017-02-20">
+              2017-02-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/20/jQueryNote/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/jQueryNote/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/02/20/jQueryNote/" class="leancloud_visitors" data-flag-title="jQueryNote">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="jquery-trigger-源码"><a href="#jquery-trigger-源码" class="headerlink" title="jquery trigger()源码"></a>jquery trigger()源码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">   * 事件触发器</div><div class="line">   * @param &#123; Object &#125; DOM元素</div><div class="line">   * @param &#123; String / Object &#125; 事件类型 / event对象</div><div class="line">   * @param &#123; Array &#125;  传递给事件处理函数的附加参数</div><div class="line">   * @param &#123; Boolean &#125; 是否冒泡</div><div class="line"> **/</div><div class="line">  trigger : function( elem, event, data, isStopPropagation )&#123;</div><div class="line">      var type = event.type || event,</div><div class="line">          // 冒泡的父元素，一直到document、window</div><div class="line">          parent = elem.parentNode ||</div><div class="line">              elem.ownerDocument ||</div><div class="line">              elem === elem.ownerDocument &amp;&amp; win,</div><div class="line">          eventHandler = $.data( elem, type + &apos;Handler&apos; );</div><div class="line"></div><div class="line">      isStopPropagation = typeof data === &apos;boolean&apos; ?</div><div class="line">          data : (isStopPropagation || false);</div><div class="line"></div><div class="line">      data = data &amp;&amp; isArray( data ) ? data : [];</div><div class="line"></div><div class="line">      // 创建自定义的event对象</div><div class="line">      event = typeof event === &apos;object&apos; ?</div><div class="line">          event : &#123;</div><div class="line">              type : type,</div><div class="line">              preventDefault : noop,</div><div class="line">              stopPropagation : function()&#123;</div><div class="line">                  isStopPropagation = true;</div><div class="line">              &#125;</div><div class="line">          &#125;;</div><div class="line"></div><div class="line">      event.target = elem;</div><div class="line">      data.unshift( event );</div><div class="line">      if( eventHandler )&#123;</div><div class="line">          eventHandler.call( elem, data );</div><div class="line">      &#125;</div><div class="line">     // 递归调用自身来模拟冒泡</div><div class="line">      if( parent &amp;&amp; !isStopPropagation )&#123;</div><div class="line">          data.shift();</div><div class="line">          this.trigger( parent, event, data );</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="封装一个核心函数，实现类jquery的链式调用"><a href="#封装一个核心函数，实现类jquery的链式调用" class="headerlink" title="封装一个核心函数，实现类jquery的链式调用"></a>封装一个核心函数，实现类jquery的链式调用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">  函数库封装，创建一个核心对象。Ice</div><div class="line"> */</div><div class="line">  var $ = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">    <span class="built_in">return</span> new Ice();</div><div class="line">  &#125;;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">Ice</span></span>()&#123;</div><div class="line">  //创建一个数组来保存获取的节点和节点数组</div><div class="line">  this.elem = [];</div><div class="line">  //获取elem的id</div><div class="line">  this.getId=<span class="keyword">function</span>(obj)&#123;</div><div class="line">    obj = obj.noSpace();</div><div class="line">    <span class="keyword">if</span>(obj.substring(0,1)==<span class="string">"#"</span>)&#123;</div><div class="line">    nobj = obj.substring(1);</div><div class="line">    nobj = document.getElementById(nobj);</div><div class="line">    this.elem.push(nobj);</div><div class="line">    <span class="built_in">return</span> this;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  //获取元素elem的class</div><div class="line">  this.getClass=<span class="keyword">function</span>(obj)&#123;</div><div class="line">    obj = obj.noSpace();</div><div class="line">    <span class="keyword">if</span>(obj.substring(0,1)==<span class="string">"."</span>)&#123;</div><div class="line">    nobj = obj.substring(1);</div><div class="line">    nelem = document.getElementsByClassName(nobj);</div><div class="line">    <span class="keyword">for</span> (var i=0; i &lt; nelem.length; i++) &#123;</div><div class="line">      this.elem.push(nelem[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> this;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">//定义css()方法</div><div class="line">Ice.prototype.css=<span class="keyword">function</span>(attr,val)&#123;</div><div class="line">  <span class="keyword">for</span> (var i=0; i &lt; this.elem.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (arguments.length==1) &#123;</div><div class="line">      <span class="keyword">if</span> (typeof window.getComputedStyle != <span class="string">"undefined"</span>)&#123;//W3C</div><div class="line">        <span class="built_in">return</span> window.getComputedStyle(this.elem[i],null)[attr];</div><div class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span>(typeof this.elem[i].currentStyle != <span class="string">"undefined"</span>)&#123;//IE</div><div class="line">        <span class="built_in">return</span> this.elem[i].currentStyle[attr];</div><div class="line">      &#125;</div><div class="line">      <span class="built_in">return</span> this.elem[i].style[attr];</div><div class="line">    &#125;</div><div class="line">    this.elem[i].style[attr] = val;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> this;</div><div class="line">&#125;</div><div class="line">//定义html()方法</div><div class="line">Ice.prototype.html=<span class="keyword">function</span>(str)&#123;</div><div class="line">  <span class="keyword">for</span> (var i=0; i &lt; this.elem.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (arguments.length==0) &#123;</div><div class="line">      <span class="built_in">return</span> this.elem[i].innerHTML;</div><div class="line">    &#125;</div><div class="line">    this.elem[i].innerHTML = str;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> this;</div><div class="line">&#125;</div><div class="line">//定义click()方法</div><div class="line">Ice.prototype.click=<span class="keyword">function</span>(fn)&#123;</div><div class="line">  <span class="keyword">for</span> (var i=0; i &lt; this.elem.length; i++) &#123;</div><div class="line">    this.elem[i].onclick = fn;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> this;</div><div class="line">&#125;</div><div class="line">//定义addClass()方法</div><div class="line">Ice.prototype.addClass=<span class="keyword">function</span>(className)&#123;</div><div class="line">  className = className.noSpace();</div><div class="line">  var reg = new RegExp(<span class="string">'(\\s|^)'</span>+className+<span class="string">'(\\s|$)'</span>);</div><div class="line">  <span class="keyword">for</span> (var i=0; i &lt; this.elem.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (!this.elem[i].className.match(reg)) &#123;//判断类名是否存在，不存在则添加</div><div class="line">      this.elem[i].className += <span class="string">' '</span>+className;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> this;</div><div class="line">&#125;</div><div class="line">//定义removeClass()方法</div><div class="line">Ice.prototype.removeClass=<span class="keyword">function</span>(className)&#123;</div><div class="line">  className = className.noSpace();</div><div class="line">  var reg = new RegExp(<span class="string">'(\\s|^)'</span>+className+<span class="string">'(\\s|$)'</span>);</div><div class="line">  <span class="keyword">for</span> (var i=0; i &lt; this.elem.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (this.elem[i].className.match(reg)) &#123;//判断类名是否存在，存在则删除,即用空格替代</div><div class="line">      this.elem[i].className = this.elem[i].className.replace(reg,<span class="string">' '</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> this;</div><div class="line">&#125;</div><div class="line">//定义eq()方法</div><div class="line">Ice.prototype.eq=<span class="keyword">function</span>(num)&#123;</div><div class="line">  var elems = this.elem[num];</div><div class="line">  this.elem = [];//清空元素数组</div><div class="line">  this.elem[0] = elems;</div><div class="line">  <span class="built_in">return</span> this;</div><div class="line">&#125;</div><div class="line">//定义first()方法</div><div class="line">Ice.prototype.first=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">  var elems = this.elem[0]</div><div class="line">  this.elem = [];//清空元素数组</div><div class="line">  this.elem[0] = elems;</div><div class="line">  <span class="built_in">return</span> this;</div><div class="line">&#125;</div><div class="line">//定义last()方法</div><div class="line">Ice.prototype.last=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">  var la = this.elem.length-1;</div><div class="line">  var elems = this.elem[la];</div><div class="line">  this.elem = [];//清空元素数组</div><div class="line">  this.elem[0] = elems;</div><div class="line">  <span class="built_in">return</span> this;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="封装document对象cookies方法"><a href="#封装document对象cookies方法" class="headerlink" title="封装document对象cookies方法"></a>封装document对象cookies方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sessionStorage.setItem()&amp;sessionStorage.getItem();</div><div class="line"><span class="built_in">local</span>Storage.setItem()&amp;<span class="built_in">local</span>Storage.getItem();</div></pre></td></tr></table></figure>
+<p>//参数解析：<br>name:cookie名 val:cookie值 expires:cookie过期时间 path:有效路径 domain:有效域名 secure:是否加密<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="built_in">set</span>Cookie(name,val,expires,path,domain,secure)&#123;</div><div class="line">  var cookieName = encodeURIComponent(name)+<span class="string">"="</span>+encodeURIComponent(val);</div><div class="line">  <span class="keyword">if</span>(expires instanceof Date)&#123;//setting expries day time</div><div class="line">    cookieName +=<span class="string">";expires="</span>+expires;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (path) &#123;</div><div class="line">    cookieName +=<span class="string">";path="</span>+path;//setting cookie path</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (domain) &#123;</div><div class="line">    cookieName +=<span class="string">";domian="</span>+domain;//setting proxy name</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (secure) &#123;</div><div class="line">    cookieName +=<span class="string">";secure"</span>;//setting secure</div><div class="line">  &#125;</div><div class="line">  document.cookies = cookieName;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="built_in">set</span>CookieDate(day)&#123; //get day <span class="keyword">function</span></div><div class="line">  var date = null;</div><div class="line">  <span class="keyword">if</span>(typeof day == <span class="string">"number"</span> &amp;&amp; day&gt;0)&#123;</div><div class="line">    date = new Date();</div><div class="line">    date.setDate(date.getDate()+7);</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">    throw new Error(<span class="string">"你的天数不合法！请设置数字"</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> date;</div><div class="line">&#125;</div><div class="line"><span class="built_in">set</span>Cookie(<span class="string">"user"</span>,<span class="string">"yang"</span>);</div><div class="line"><span class="built_in">set</span>Cookie(<span class="string">"url"</span>,<span class="string">"icetower.cn"</span>,<span class="built_in">set</span>CookieDate(7));</div><div class="line"></div><div class="line">//获取cookies值</div><div class="line"><span class="keyword">function</span> getCookie(name)&#123;</div><div class="line">  var cookieName = encodeURIComponent(name)+<span class="string">"="</span>;</div><div class="line">  var cookieStart = document.cookies.indexOf(cookieName);</div><div class="line">  var cookieVal = null;</div><div class="line">  <span class="keyword">if</span>(cookieStart &gt; -1)&#123;</div><div class="line">    var cookieEnd = document.cookies.indexOf(<span class="string">";"</span>,cookieStart);</div><div class="line">    <span class="keyword">if</span> (cookieEnd == -1) &#123;</div><div class="line">      var cookieEnd = document.cookies.length;</div><div class="line">    &#125;</div><div class="line">    var val=document.cookies.substring(cookieStart+cookieName.length,cookieEnd);</div><div class="line">    cookieVal=decodeURIComponent(val);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> cookieVal;</div><div class="line">&#125;;</div><div class="line">// console.log(getCookie(<span class="string">"user"</span>));</div><div class="line">// console.log(document.cookies);</div></pre></td></tr></table></figure></p>
+<h3 id="jquery点击空白，隐藏弹窗面板"><a href="#jquery点击空白，隐藏弹窗面板" class="headerlink" title="jquery点击空白，隐藏弹窗面板"></a>jquery点击空白，隐藏弹窗面板</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(document).mouseup(<span class="keyword">function</span>(e)&#123;</div><div class="line">    var _con = $(<span class="string">".tartet"</span>);   // 设置目标区域</div><div class="line">    <span class="keyword">if</span>(!_con.is(e.target) &amp;&amp; _con.has(e.target).length === 0)&#123;</div><div class="line">      $(<span class="string">".tartet"</span>).hide();</div><div class="line">    &#125;</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作^_^！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/Wechatpay.jpeg" alt="yanghc WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpeg" alt="yanghc Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag">#javaScript</a>
+          
+            <a href="/tags/jQuery/" rel="tag">#jQuery</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/20/javascript_event/" rel="next" title="javascript事件">
+                <i class="fa fa-chevron-left"></i> javascript事件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/20/mySQLNote/" rel="prev" title="mySQLNote">
+                mySQLNote <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/02/20/jQueryNote/"
+     data-title="jQueryNote"
+     data-content=""
+     data-url="http://yoursite.com/2017/02/20/jQueryNote/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/20/jQueryNote/"
+           data-title="jQueryNote" data-url="http://yoursite.com/2017/02/20/jQueryNote/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="yanghc" />
+          <p class="site-author-name" itemprop="name">yanghc</p>
+          <p class="site-description motion-element" itemprop="description">既然选择了远方，便只顾风雨兼程<br/>personal blog</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yanghcc" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/IcetowerTech" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/IcetowerTech/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery-trigger-源码"><span class="nav-number">1.</span> <span class="nav-text">jquery trigger()源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装一个核心函数，实现类jquery的链式调用"><span class="nav-number">2.</span> <span class="nav-text">封装一个核心函数，实现类jquery的链式调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装document对象cookies方法"><span class="nav-number">3.</span> <span class="nav-text">封装document对象cookies方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery点击空白，隐藏弹窗面板"><span class="nav-number">4.</span> <span class="nav-text">jquery点击空白，隐藏弹窗面板</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yanghc</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"icetower"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("2sCCRq0wV61UaepBtUojQgiU-gzGzoHsz", "hYPzdu4bjbvA7Ttgur5r5OQn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
