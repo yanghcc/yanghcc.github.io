@@ -515,6 +515,35 @@
 <h2 id="使用正则表达式"><a href="#使用正则表达式" class="headerlink" title="使用正则表达式"></a>使用正则表达式</h2><p>正则表达式可以被用于RegExp的 <strong>exec</strong>和 <strong>test</strong>方法以及 String的 <strong>match</strong>、<strong>replace</strong>、<strong>search</strong>和 <strong>split</strong>方法。这些方法在<a href="http://www.w3school.com.cn/js/" target="_blank" rel="external">JavaScript</a>手册中有详细的解释。</p>
 <p>使用正则表达式的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">**exec：** 一个在字符串中执行查找匹配的RegExp方法，它返回一个数组（未匹配到则返回null）。</div><div class="line">**test：** 一个在字符串中测试是否匹配的RegExp方法，它返回true或false。</div><div class="line">**match：** 一个在字符串中执行查找匹配的String方法，它返回一个数组或者在未匹配到时返回null。</div><div class="line">**search：** 一个在字符串中测试匹配的String方法，它返回匹配到的位置索引，或者在失败时返回-1。</div><div class="line">**replace：** 一个在字符串中执行查找匹配的String方法，并且使用替换字符串替换掉匹配到的子字符串。</div><div class="line">**split：** 一个使用正则表达式或者一个固定字符串分隔一个字符串，并将分隔后的子字符串存储到数组中的String方法。</div></pre></td></tr></table></figure></p>
 <p>当你想要知道在一个字符串中的一个匹配是否被找到，你可以使用test或search方法；想得到更多的信息（但是比较慢）则可以使用exec或match方法。如果你使用exec或match方法并且匹配成功了，那么这些方法将返回一个数组并且更新相关的正则表达式对象的属性和预定义的正则表达式对象（详见下）。如果匹配失败，那么exec方法返回null（也就是false）。</p>
+<h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><p>在正则表达式中，字符分为普通字符和元字符；</p>
+<p>[] 是分类。在js中有很多默认的类。如：. 等同于 [ ^\r\n ], \s, \S, \d, \D …</p>
+<p>-在两个字符中的时候表示范围，否则表示普通字符 -</p>
+<p>() 表示分组，如果存在多个分组，使用$+数字序号表示匹配不同的分组，作用类似变量。在分组内加上?:表示忽略当前分组，如：(?: ignore).(normal)。分组也可以称为子表达式。</p>
+<p>+表示匹配一个以上</p>
+<p>? 表示匹配最多一个</p>
+<p>*表示匹配0个以上</p>
+<p>| 是或的意思</p>
+<p>^ 表示匹配开头为XXX的字符</p>
+<p>$ 表示匹配结尾为XXX的字符</p>
+<p>{n} 其中n表示匹配n次；{n,m} 表示匹配n次到m次；{n,} 表示匹配至少n次；{0,m} 表示匹配至多m次；</p>
+<p>前瞻：在正则表达式匹配到规则的时候，向前检查是否符合断言，后顾方向相反；符不符合特定断言称为肯定/正向匹配和否定/负向匹配；</p>
+<p>正向前瞻：exp(?=assert) 如：’ad11’.replace(/\w(?=\d)/g,’Q’)  &gt;&gt;&gt; ‘aQ11’</p>
+<p>负向前瞻：exp(?!assert) 如： ‘adadad111’.replace(/\w(?!\d)/g,’Q’)  &gt;&gt;&gt; “QQQQQd11Q”</p>
+<p>后顾：在js中不支持正则表达式后顾</p>
+<p>正向后顾：exp(?&lt;=assert)<br>负向后顾：exp(?&lt; !assert)</p>
+<p>js中的正则匹配默认是贪婪模式，在表达式后面加 ?，设置为非贪婪模式；</p>
+<p>在表达式 var reg = /\w/gim 中，</p>
+<p>g表示global，全局匹配</p>
+<p>i表示ignoreCase，忽略字母大小写</p>
+<p>m表示multiple，表示多行匹配</p>
+<p>正则表达式中，lastIndex是当前匹配字符的下一个字符的索引；source是正则表达式的文本。</p>
+<p>正则表达式对象默认属性方法，如：</p>
+<p>.test(str)</p>
+<p>.exec(str)</p>
+<p>.replace(reg,str)，其中第二个参数也可以是一个回调函数</p>
+<p>.match(reg)</p>
+<p>.split(reg)</p>
+<p>.search(reg)</p>
 
           
         
